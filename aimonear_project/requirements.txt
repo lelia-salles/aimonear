@@ -1,0 +1,24 @@
+# --- Web Framework & API ---
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic==2.5.3
+pydantic-settings==2.1.0
+python-multipart==0.0.6  # Required for OAuth2 form handling
+
+# --- Database & Migrations ---
+sqlalchemy==2.0.25
+alembic==1.13.1
+psycopg2-binary==2.9.9   # PostgreSQL adapter
+
+# --- Security (Auth & Hash) ---
+passlib[bcrypt]==1.7.4   # Password hashing
+python-jose[cryptography]==3.3.0  # JWT Token generation
+
+# --- Data Science & Audio (AImonEar Core) ---
+numpy==1.26.3            # Matrix math for Neural Network & Audio
+scipy==1.11.4            # Wav file generation
+
+# --- Utilities ---
+python-dotenv==1.0.0     # Load variables from .env
+requests==2.31.0         # For internal testing
+httpx==0.26.0            # Async HTTP client

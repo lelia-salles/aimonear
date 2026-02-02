@@ -1,24 +1,25 @@
-# --- Web Framework & API ---
-fastapi==0.109.0
-uvicorn[standard]==0.27.0
-pydantic==2.5.3
-pydantic-settings==2.1.0
-python-multipart==0.0.6  # Required for OAuth2 form handling
+# --- Core Framework ---
+fastapi>=0.115.8
+uvicorn[standard]>=0.34.0
+pydantic>=2.10.0          # Atualizado: Pydantic v1 é legado e instável no 3.13
+pydantic-settings>=2.7.0  # Atualizado para compatibilidade com Pydantic v2
+python-multipart>=0.0.20  # Versões antigas quebram no Python 3.13
 
 # --- Database & Migrations ---
-sqlalchemy==2.0.25
-alembic==1.13.1
-psycopg2-binary==2.9.9   # PostgreSQL adapter
+sqlalchemy>=2.0.37        # Atualizado para correções de tipagem no 3.13
+alembic>=1.14.1
+psycopg2-binary>=2.9.10   # Estabilidade para instâncias PostgreSQL recentes
 
 # --- Security (Auth & Hash) ---
-passlib[bcrypt]==1.7.4   # Password hashing
-python-jose[cryptography]==3.3.0  # JWT Token generation
+# IMPORTANTE: passlib e python-jose estão abandonados e dão erro no Python 3.13
+bcrypt>=4.2.1             # Substitui passlib para hashing de senhas
+pyjwt[crypto]>=2.10.1     # Substitui python-jose para JWT (padrão atual)
 
 # --- Data Science & Audio (AImonEar Core) ---
-numpy==1.26.3            # Matrix math for Neural Network & Audio
-scipy==1.11.4            # Wav file generation
+numpy>=2.1.0              # NumPy 2.x é necessário para suporte nativo ao Python 3.13
+scipy>=1.15.0             # Versão mínima estável para 3.13
 
 # --- Utilities ---
-python-dotenv==1.0.0     # Load variables from .env
-requests==2.31.0         # For internal testing
-httpx==0.26.0            # Async HTTP client
+python-dotenv>=1.0.1
+requests>=2.32.3
+httpx>=0.28.1

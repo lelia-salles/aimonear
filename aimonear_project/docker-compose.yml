@@ -1,0 +1,32 @@
+services:
+  # Primary Database Service
+  db:
+    image: postgres:16-alpine
+    container_name: aimonear_db
+    restart: always
+    environment:
+      POSTGRES_USER: aimonear_user
+      POSTGRES_PASSWORD: aimonear_secret_password
+      POSTGRES_DB: aimonear_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aimonear_user -d aimonear_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Database GUI (Optional, good for debugging)
+  adminer:
+    image: adminer:latest
+    container_name: aimonear_adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:

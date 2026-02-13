@@ -1,10 +1,11 @@
+from app.core.security import verify_password, create_access_token
+from app.database.models import User
+from app.schemas.user_schema import Token
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
-from app.database.connection import get_db
-from app.database.models import User
-from app.core.security import verify_password, create_access_token
-from app.schemas.user_schema import Token
+
+from aimonear.aimonear.aimonear_project.app.database.connection import get_db
 
 router = APIRouter()
 
